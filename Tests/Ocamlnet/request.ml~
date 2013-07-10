@@ -1,0 +1,23 @@
+
+
+let print_request_body body =
+  let ch = body # open_value_rd () in
+  try
+    while true do
+      let line = ch # input_line() in
+      print_string line
+    done;
+    assert false; (* never reached *)
+  with
+    End_of_file ->
+    ch # close_in();;
+
+
+let GET_subredditInfo pipeline ?(sorting="") sr =
+  let url = Printf.printf "http://www.reddit.com/r/%s/%s.json" sr sorting in
+  let request = new Http_client
+
+
+
+let _ =
+  let rq = new Http_client.get 
